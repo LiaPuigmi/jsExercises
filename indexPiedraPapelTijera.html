@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪨🧻✂️</title>
+    <link rel="stylesheet" href="stylePPT.css">
+</head>
+<body>
+    <header class="header">
+        <h2 class="header_title">Piedra, Papel, Tijera</h2>
+    </header>
+
+    <div class="main_container">
+        <div class="vs_container">
+            <div class="player">
+                <img src="./imagenes/player1.png" alt="player1">
+                <p>Player 1</p>
+                <p id="puntos_player1">0</p>
+            </div>
+            <div class="vs">
+                <h3 id="result">VS</h3>
+            </div>
+            <div class="player">
+                <img src="./imagenes/robot.png" alt="player2">
+                <p>Player 2</p>
+                <p id="puntos_player2">0</p>
+            </div>
+        </div>
+        
+        <div class="game_container">
+            <div class="game_options">
+                <button id="piedra" class="option_piedra">
+                    <img src="./imagenes/piedra.png" alt="piedra">
+                </button>
+                <button id="papel" class="option_papel">
+                    <img src="./imagenes/papel.png" alt="papel">
+                </button>
+                <button id="tijeras" class="option_tijeras">
+                    <img src="./imagenes/tijeras.png" alt="tijeras">
+                </button>
+            </div>
+            <div class="details">
+                <p>Piedra gana a tijera y pierde contra papel</p>
+                <p>Papel gana a piedra y pierde contra tijera</p>
+                <p>Tijera gana a papel y pierde contra piedra</p>
+            </div>
+
+        </div>
+
+        <div class="start_game">
+            <button id="start_game">
+                <img src="./imagenes/play.png" alt="start">
+            </button>
+            <button id="reset_game">
+                <img src="./imagenes/reset.png" alt="reset">
+            </button>
+        </div>
+
+    </div>
+</body>
+</html>
