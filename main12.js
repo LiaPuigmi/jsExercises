@@ -51,19 +51,15 @@ for (let index = 0; index < frutas.length; index++) {
 en el siguiente array: 🌶🥛🌶🥛🌶🥛 */
 
 const picapica=['🌶','🥛','🌶','🥛','🌶','🥛'];
-const picapica2=[];
 for (let index = 0; index < picapica.length; index++) {
     if(picapica[index]=='🌶'){
-        picapica2.push(picapica[index]);
-        picapica2.push('🥵');
-    }else{
-        picapica2.push(picapica[index]);
+        const deletedArray = picapica.splice(index+1, 0, '🥵');
+        
     }
     
 }
 
-for (let index = 0; index < picapica2.length; index++) {
-    picapica[index]=picapica2[index];
+for (let index = 0; index < picapica.length; index++) {
     console.log(picapica[index]);
     
 }
@@ -74,16 +70,12 @@ const cartas=['🎴','🎴','🎴','🃏','🎴','🎴','🎴'];
 const cartas2=[];
 for (let index = 0; index < cartas.length-1; index++) {
     if(cartas[index]=='🎴' && cartas[index+1]=='🎴'){
-        cartas2.push('🎴')
-        cartas2.push('🃏');
-    }else{
-        cartas2.push(cartas[index]);
+        const deletedArray = cartas.splice(index+1, 0, '🃏');
     }
     
 }
-cartas2.push(cartas[cartas.length-1]);
-for (let index = 0; index < cartas2.length; index++) {
-    cartas[index]=cartas2[index];
+
+for (let index = 0; index < cartas.length; index++) {
     console.log(cartas[index]);
     
 }
