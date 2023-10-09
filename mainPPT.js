@@ -14,6 +14,7 @@ let select_player1;
 let select_player2;
 let vs;
 
+
 let valor_opt_random=['piedra','papel','tijeras'];
 function opt_random(){
     return[...valor_opt_random]
@@ -37,7 +38,7 @@ start.onclick=function(){
         select_player2=opt_random(valor_opt_random.toString());
         display_option_player(select_player2);
         game_vs(select_player1,select_player2);
-        console.log(select_player1);
+        
     }else{
         document.getElementById('result').innerText='Elige una opción';
         document.getElementById('result').style.color='#A12035';
@@ -99,7 +100,7 @@ function game_vs(select_player1,select_player2){
         document.getElementById('result').style.color='#3FA794';
         puntos_player1++;
         document.getElementById('puntos_player1').innerText=puntos_player1;
-
+        
     }else if(vs=='same'){
         document.getElementById('result').innerText='Empate';
         document.getElementById('result').style.color='#FEC260';
@@ -117,3 +118,7 @@ const reload=document.getElementById('reset_game');
 reload.addEventListener('click',_=>{
     location.reload();
 })
+
+
+
+
