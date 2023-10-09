@@ -8,10 +8,10 @@ const quantityInsert=document.getElementById('quantityInsert');
 const quantityRemove=document.getElementById('quantityRemove');
 const remove=document.getElementById('remove');
 const array=[];
-const aux=[];
-
+let icon=['😁','🤣','😎','🥰','🙄','😫','🥱','😴','🤤','😲','🤑','☹','🤯','😭','😱','🥵','🥶','😳','😵','🤪','🥴','🤮','🤬','🥳','😇','🤡','🤫','😈','👽','👾','👻','☠','💩','🤖'];
 push.onclick=function(){
-    array.push('1');
+    let random=Math.floor(Math.random() * icon.length);
+    array.push(icon[random]);
     elements.innerHTML=array;
     
 }
@@ -22,7 +22,8 @@ pop.onclick=function(){
 }
 
 unshift.onclick=function(){
-    array.unshift('2');
+    let random=Math.floor(Math.random() * icon.length);
+    array.unshift(icon[random]);
     elements.innerHTML=array;
 }
 
@@ -32,7 +33,12 @@ shift.onclick=function(){
 }
 
 insert.onclick=function(){
+    let random=Math.floor(Math.random() * icon.length);
+    const deletedArray = array.splice(quantityInsert.value, 0, icon[random]);
+    elements.innerHTML=array;
+}
 
-    const deletedArray = array.splice(quantityInsert.value, 0, '3');
+remove.onclick=function(){
+    const deletedArray = array.splice(quantityRemove.value, 1);
     elements.innerHTML=array;
 }
