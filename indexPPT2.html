@@ -3,201 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylePPT.css">
+    <link rel="stylesheet" href="stylePPT2.css">
     <title>Document</title>
 </head>
 <body>
     <header class="header">
-        <h2 class="header_title">Piedra, Papel, Tijera</h2>
+        <h2 class="header_title">Piedra, Papel, Tijera Version 2</h2>
     </header>
     
     <div class="main_container">
         <div class="vs_container">
-            <div class="player">
-                <img id="player1" src="./imagenes/player1.png" alt="player1">
-                <p>Player 1</p>
-                <p id="puntos_player1">0</p>
-            </div>
-            <div class="vs">
-                <h3 id="result">VS</h3>
-            </div>
-            <div class="player">
-                <img id="player2" src="./imagenes/robot.png" alt="player2">
-                <p>Player 2</p>
-                <p id="puntos_player2">0</p>
-            </div>
-        </div>
-        
-        <div class="game_container">
-            <div class="game_options">
-                <button id="piedra" class="option_piedra">
-                    <img src="./imagenes/piedra.png" alt="piedra">
-                </button>
-                <button id="papel" class="option_papel">
-                    <img src="./imagenes/papel.png" alt="papel">
-                </button>
-                <button id="tijeras" class="option_tijeras">
-                    <img src="./imagenes/tijeras.png" alt="tijeras">
-                </button>
-            </div>
-            <div class="details">
-                <p>Piedra gana a tijera y pierde contra papel</p>
-                <p>Papel gana a piedra y pierde contra tijera</p>
-                <p>Tijera gana a papel y pierde contra piedra</p>
-            </div>
-
-        </div>
-
-        <div class="start_game">
-            <button id="start_game">
-                <img src="./imagenes/play.png" alt="start">
-            </button>
-            <button id="reset_game">
-                <img src="./imagenes/reset.png" alt="reset">
-            </button>
-        </div>
-             
-        <!-- <div id="g"></div>  -->
-        <iframe src="./indexPrueba.html" frameborder="0"></iframe>
-
-    <script>
-        let opt_piedra=document.getElementById('piedra');
-        let opt_papel=document.getElementById('papel');
-        let opt_tijeras=document.getElementById('tijeras');
-
-        let img_opt_player1=document.getElementById('player1');
-        let img_opt_player2=document.getElementById('player2');
-
-        let start=document.getElementById('start_game');
-
-        let puntos_player1=document.getElementById("player1").innerText;
-        let puntos_player2=document.getElementById("player2").innerText;
-
-        let select_player1;
-        let select_player2;
-        let vs;
-
-        let valor_opt_random=['piedra','papel','tijeras'];
-        function opt_random(){
-            return[...valor_opt_random]
-            .sort(()=>Math.random() > 0.5 ? 1:-1)
-            .slice(0,1)
-        }
-
-        function display_option_player(select_player2){
-            if(select_player2=='piedra'){
-                img_opt_player2.src='./imagenes/piedra.png';
-            }else if(select_player2=='papel'){
-                img_opt_player2.src='./imagenes/papel.png';
-            }else{
-                img_opt_player2.src='./imagenes/tijeras.png';
-            }
-        }
-
-
-        start.onclick=function(){
-            if(select_player1!=undefined){
-                select_player2=opt_random(valor_opt_random.toString());
-                display_option_player(select_player2);
-                game_vs(select_player1,select_player2);
+            <script>
+                document.write('<h4>Elige:</h4>'
+                    +'<div class="game_container">'
+                    +'<div class="game_options">'
+                    +'<button id="piedra" class="option_piedra">'
+                    +'<img src="./imagenes/piedra.png" alt="piedra">'
+                    +'</button>'
+                    +'<button id="papel" class="option_papel">'
+                    +'<img src="./imagenes/papel.png" alt="papel">'
+                    +'</button>'
+                    +'<button id="tijeras" class="option_tijeras">'
+                    +'<img src="./imagenes/tijeras.png" alt="tijeras">'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>');
                 
-            }else{
-                document.getElementById('result').innerText='Elige una opción';
-                document.getElementById('result').style.color='#A12035';
-            }
-            geek(select_player1,select_player2);
-        }
 
-
-        opt_piedra.onclick=function(){
-            select_player1='piedra';
-            img_opt_player1.src='./imagenes/piedra.png';
-            img_opt_player2.src='./imagenes/robot.png';
-
-        }
-
-        opt_papel.onclick=function(){
-            select_player1='papel';
-            img_opt_player1.src='./imagenes/papel.png';
-            img_opt_player2.src='./imagenes/robot.png';
-
-        }
-
-        opt_tijeras.onclick=function(){
-            select_player1='tijeras';
-            img_opt_player1.src='./imagenes/tijeras.png';
-            img_opt_player2.src='./imagenes/robot.png';
-
-        }
-
-        function game_vs(select_player1,select_player2){
-            if(select_player1=='piedra'){
-                if(select_player2=='piedra'){
-                    vs='same';
-                }else if(select_player2=='papel'){
-                    vs='p2win';
-                }else{
-                    vs='p1win';
-                }
-            }else if(select_player1=='papel'){
-                if(select_player2=='papel'){
-                    vs='same';
-                }else if(select_player2=='tijeras'){
-                    vs='p2win';
-                }else{
-                    vs='p1win';
-                }
-            }else if(select_player1=='tijeras'){
-                if(select_player2=='tijeras'){
-                    vs='same';
-                }else if(select_player2=='piedra'){
-                    vs='p2win';
-                }else{
-                    vs='p1win';
-                }
-            }
-
-            if(vs=='p1win'){
-                document.getElementById('result').innerText='Player 1 gana';
-                document.getElementById('result').style.color='#3FA794';
-                puntos_player1++;
-                document.getElementById('puntos_player1').innerText=puntos_player1;
+                </script>
+            </div>
+            <div class="start_game">
+                <script>
+                    document.write('<button id="start_game">'
+                        +'<img src="./imagenes/play.png" alt="start">'
+                        +'</button>'
+                        +'<button id="reset_game">'
+                        +'<img src="./imagenes/reset.png" alt="reset">'
+                        +'</button>');
+                </script>
                 
-            }else if(vs=='same'){
-                document.getElementById('result').innerText='Empate';
-                document.getElementById('result').style.color='#FEC260';
+            </div>
 
-            }else if(vs=='p2win'){
-                document.getElementById('result').innerText='Player 2 gana';
-                document.getElementById('result').style.color='#A10035';
-                puntos_player2++;
-                document.getElementById('puntos_player2').innerText=puntos_player2;
-            }
+            <div class="details vs_container" id="explication">
+                <div class="game_container">
+                    <div class="game_options">
+                        <script>
+                            let opt_piedra=document.getElementById('piedra');
+                            let opt_papel=document.getElementById('papel');
+                            let opt_tijeras=document.getElementById('tijeras');
+
+                            let start=document.getElementById('start_game');
+
+                            let select_player1;
+                            let select_player2;
+                            let vs;
+
+                            let valor_opt_random=['piedra','papel','tijeras'];
+                            function opt_random(){
+                                return[...valor_opt_random]
+                                .sort(()=>Math.random() > 0.5 ? 1:-1)
+                                .slice(0,1)
+                            }
+
+
+
+                        start.onclick=function(){
+                            if(select_player1!=undefined){
+                                select_player2=opt_random(valor_opt_random.toString());
+                                game_vs(select_player1,select_player2);
+                                
+                            }else{
+                                document.getElementById('explication').innerText='Elige una opción';
+                                document.getElementById('explication').style.color='#A12035';
+                            }
+                            /* geek(select_player1,select_player2); */
+                        }
+
+
+                        opt_piedra.onclick=function(){
+                            select_player1='piedra';
+
+                        }
+
+                        opt_papel.onclick=function(){
+                            select_player1='papel';
+
+                        }
+
+                        opt_tijeras.onclick=function(){
+                            select_player1='tijeras';
+
+                        }
+
+                        function game_vs(select_player1,select_player2){
+                            if(select_player1=='piedra'){
+                                if(select_player2=='piedra'){
+                                    vs='same';
+                                }else if(select_player2=='papel'){
+                                    vs='p2win';
+                                }else{
+                                    vs='p1win';
+                                }
+                            }else if(select_player1=='papel'){
+                                if(select_player2=='papel'){
+                                    vs='same';
+                                }else if(select_player2=='tijeras'){
+                                    vs='p2win';
+                                }else{
+                                    vs='p1win';
+                                }
+                            }else if(select_player1=='tijeras'){
+                                if(select_player2=='tijeras'){
+                                    vs='same';
+                                }else if(select_player2=='piedra'){
+                                    vs='p2win';
+                                }else{
+                                    vs='p1win';
+                                }
+                            }
+                            let player1icon;
+                            let player2icon;
+                            switch(select_player1){
+                                case 'piedra':
+                                    player1icon='./imagenes/piedra.png';
+                                    break;
+                                case 'papel':
+                                    player1icon='./imagenes/papel.png';
+                                    break;
+                                case 'tijeras':
+                                    player1icon='./imagenes/tijeras.png';
+                                    break;
+                            }
+
+                            switch(select_player2.toString()){
+                                case 'piedra':
+                                    player2icon='./imagenes/piedra.png';
+                                    break;
+                                case 'papel':
+                                    player2icon='./imagenes/papel.png';
+                                    break;
+                                case 'tijeras':
+                                    player2icon='./imagenes/tijeras.png';
+                                    break;
+                            }
+
+                            if(vs=='p1win'){
+                                document.getElementById('explication').innerHTML=('<h4>Player 1 elige<br><img src="'+player1icon+'"alt="'+select_player1+'"></h4>'
+                                +'<h4>Player 2 elige <br><img src="'+player2icon+'"alt="'+select_player2+'"></h4>'
+                                +'<br><h4>Player 1 WIN</h4>');
+                                document.getElementById('explication').style.color='#3FA794';
+                            
+                                
+                            }else if(vs=='same'){
+                                document.getElementById('explication').innerHTML=('<h4>Player 1 elige <br><img src="'+player1icon+'"alt="'+select_player1+'"></h4>'
+                                +'<h4>Player 2 elige <br><img src="'+player2icon+'"alt="'+select_player2+'"></h4>'
+                                +'<br><h4>TIE</h4>');
+                                document.getElementById('explication').style.color='#FEC260';
+
+                            }else if(vs=='p2win'){
+                                document.getElementById('explication').innerHTML=('<h4>Player 1 elige <br><img src="'+player1icon+'"alt="'+select_player1+'"></h4>'
+                                +'<h4>Player 2 elige <br><img src="'+player2icon+'"alt="'+select_player2+'"></h4>'
+                                +'<br><h4>Player 1 LOSE</h4>');
+                                document.getElementById('explication').style.color='#A10035';
+                                
+                            }
+                            
+                        }
+
+                        const reload=document.getElementById('reset_game');
+                        reload.addEventListener('click',_=>{
+                            location.reload();
+                        })
+
+                        </script>
+                    </div>
+                </div>
+            </div>
             
-        }
-
-        const reload=document.getElementById('reset_game');
-        reload.addEventListener('click',_=>{
-            location.reload();
-        })
-
-         function geek() { 
-            let result=document.getElementById('result').outerHTML;
-            window.location.href='./indexPrueba.html';
-            document.write("Player 1 elige " + select_player1 + "<br>"
-            +"Player 2 elige " + select_player2 + "<br>"+ result);
-            document.write('<button id="reset_game2">RELOAD</button>')
-            const reload2=document.getElementById('reset_game2');
-            reload2.addEventListener('click',_=>{
-             location.reload(); 
-            location.href='./indexPPT2.html';
-            })
-            }  
-
-            
-       
-        
-
-    </script>
 </body>
 </html>
